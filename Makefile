@@ -16,31 +16,31 @@ help:
 	@echo "  delete       Delete image and mark for rebuild"
 	@echo ""
 
-build: .docker-dhcpd.img
+build: .dhcpd.img
 
-.docker-dhcpd.img:
-	docker build -t wastrachan/docker-dhcpd:latest .
+.dhcpd.img:
+	docker build -t wastrachan/dhcpd:latest .
 	@touch $@
 
 .PHONY: run
 run: build
 	docker run -v "$(CURDIR)/config:/config" \
-	           --name docker-dhcpd \
+	           --name dhcpd \
 	           -e PUID=1111 \
 	           -e PGID=1112 \
 	           -p 67:67/udp \
 	           --restart unless-stopped \
-	           wastrachan/docker-dhcpd:latest
+	           wastrachan/dhcpd:latest
 
 .PHONY: stop
 stop:
-	docker stop docker-dhcpd
-	docker rm docker-dhcpd
+	docker stop dhcpd
+	docker rm dhcpd
 
 .PHONY: clean
 clean:
-	rm -f .docker-dhcpd.img
+	rm -f .dhcpd.img
 
 .PHONY: delete
 delete: clean
-	docker rmi -f wastrachan/docker-dhcpd
+	docker rmi -f wastrachan/dhcpd

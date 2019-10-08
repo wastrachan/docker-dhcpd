@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     environment:
-      IMAGE_NAME: wastrachan/docker-dhcpd
+      IMAGE_NAME: wastrachan/dhcpd
     docker:
       - image: docker:latest
     steps:
