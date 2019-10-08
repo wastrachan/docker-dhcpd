@@ -14,13 +14,16 @@ echo "----------------------------------------"
 echo ""
 
 # Copy default config files
-if [ ! -f "/config/config.yml" ]; then
-    cp /defaults/config.yml /config/config.yml
+if [ ! -f "/config/dhcpd.conf" ]; then
+    cp /defaults/dhcpd.conf /config/dhcpd.conf
 fi
 
 # Set UID/GID of software user
-sed -i "s/^software\:x\:100\:101/software\:x\:$PUID\:$PGID/" /etc/passwd
-sed -i "s/^software\:x\:101/software\:x\:$PGID/" /etc/group
+sed -i "s/^dhcp\:x\:100\:101/dhcp\:x\:$PUID\:$PGID/" /etc/passwd
+sed -i "s/^dhcp\:x\:101/dhcp\:x\:$PGID/" /etc/group
+
+# Ensure lease db exists
+touch /config/dhcpd.leases
 
 # Set permissions
 chown -R $PUID:$PGID /config

@@ -1,11 +1,11 @@
-Docker Image Template
-=====================
+Docker DHCPD
+============
 
-Software in a Docker container, with configuration files in a volume, and a configurable UID/GID for said files.
+ISC DHCP Server in a Docker container, with configuration files in a volume, and a configurable UID/GID for said files.
 
-[![](https://circleci.com/gh/wastrachan/docker-image-template.svg?style=svg)](https://circleci.com/gh/wastrachan/docker-image-template)
-[![](https://images.microbadger.com/badges/image/wastrachan/docker-image-template.svg)](https://microbadger.com/images/wastrachan/docker-image-template)
-[![](https://img.shields.io/docker-image-template/pulls/wastrachan/docker-image-template.svg)](https://hub.docker-image-template.com/r/wastrachan/docker-image-template)
+[![](https://circleci.com/gh/wastrachan/docker-dhcpd.svg?style=svg)](https://circleci.com/gh/wastrachan/docker-dhcpd)
+[![](https://images.microbadger.com/badges/image/wastrachan/docker-dhcpd.svg)](https://microbadger.com/images/wastrachan/docker-dhcpd)
+[![](https://img.shields.io/docker-dhcpd/pulls/wastrachan/docker-dhcpd.svg)](https://hub.docker-dhcpd.com/r/wastrachan/docker-dhcpd)
 
 ## Install
 
@@ -13,15 +13,15 @@ Software in a Docker container, with configuration files in a volume, and a conf
 Pull the latest image from Docker Hub:
 
 ```shell
-docker pull wastrachan/docker-image-template
+docker pull wastrachan/docker-dhcpd
 ```
 
 #### Manually
 Clone this repository, and run `make build` to build an image:
 
 ```shell
-git clone https://github.com/wastrachan/docker-image-template.git
-cd docker-image-template
+git clone https://github.com/wastrachan/docker-dhcpd.git
+cd docker-dhcpd
 make build
 ```
 
@@ -36,11 +36,12 @@ Run this image with the `make run` shortcut, or manually with `docker run`.
 
 ```shell
 docker run -v "$(pwd)/config:/config" \
-           --name image-template \
+           --name docker-dhcpd \
            -e PUID=1111 \
            -e PGID=1112 \
+           -p 67:67/udp
            --restart unless-stopped \
-           wastrachan/docker-image-template:latest
+           wastrachan/docker-dhcpd:latest
 ```
 
 
@@ -52,16 +53,16 @@ If you wish to run this image with docker-compose, an example `docker-compose.ym
 version: "2"
 
 services:
-  docker-image-template:
-    image: wastrachan/docker-image-template
-    container_name: docker-image-template
+  docker-dhcpd:
+    image: wastrachan/docker-dhcpd
+    container_name: docker-dhcpd
     environment:
       - PUID=1111
       - PGID=1112
     volumes:
       - </path/to/config>:/config
     ports:
-      - 80:80/tcp
+      - 67:67/udp
     restart: unless-stopped
 ```
 
@@ -76,7 +77,7 @@ If you'd like to override the UID and GID of the application, you can do so with
 #### Services
 Service     | Port
 ------------|-----
-HTTP        | 80
+DHCP        | 67 (UDP)
 
 #### Volumes
 Volume          | Description
@@ -87,4 +88,4 @@ Volume          | Description
 ## License
 The content of this project itself is licensed under the [MIT License](LICENSE).
 
-View license information for the software contained in this image.
+View [license information](https://www.isc.org/licenses/) for the software contained in this image.
