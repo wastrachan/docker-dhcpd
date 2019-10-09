@@ -4,8 +4,7 @@ Docker DHCPD
 ISC DHCP Server in a Docker container, with configuration files in a volume, and a configurable UID/GID for said files.
 
 [![](https://circleci.com/gh/wastrachan/docker-dhcpd.svg?style=svg)](https://circleci.com/gh/wastrachan/docker-dhcpd)
-<!-- [![](https://images.microbadger.com/badges/image/wastrachan/docker-dhcpd.svg)](https://microbadger.com/images/wastrachan/docker-dhcpd) -->
-[![](https://img.shields.io/docker-dhcpd/pulls/wastrachan/docker-dhcpd.svg)](https://hub.docker-dhcpd.com/r/wastrachan/docker-dhcpd)
+[![](https://img.shields.io/docker/pulls/wastrachan/dhcpd.svg)](https://hub.docker.com/r/wastrachan/dhcpd)
 
 ## Install
 
