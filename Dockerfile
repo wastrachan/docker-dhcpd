@@ -10,7 +10,7 @@ VOLUME /config
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/sbin/dhcpd", "-4", \
-                        "-f", \
+                        "-d", \
                         "-cf", "/config/dhcpd.conf", \
                         "-lf", "/config/dhcpd.leases", \
                         "-user", "dhcp", \
