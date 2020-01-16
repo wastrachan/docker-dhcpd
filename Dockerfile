@@ -7,7 +7,6 @@ RUN mkdir /config
 
 COPY overlay/ /
 VOLUME /config
-EXPOSE 67/udp
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/sbin/dhcpd", "-4", \
