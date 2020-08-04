@@ -1,6 +1,4 @@
-Docker DHCPD
-============
-
+# Docker DHCPD
 ISC DHCP Server in a Docker container, with configuration files in a volume, and a configurable UID/GID for said files.
 
 [![](https://circleci.com/gh/wastrachan/docker-dhcpd.svg?style=svg)](https://circleci.com/gh/wastrachan/docker-dhcpd)
@@ -12,7 +10,7 @@ ISC DHCP Server in a Docker container, with configuration files in a volume, and
 Pull the latest image from Docker Hub:
 
 ```shell
-docker pull wastrachan/docker-dhcpd
+docker pull wastrachan/dhcpd
 ```
 
 #### Manually
@@ -40,7 +38,7 @@ docker run -v "$(pwd)/config:/config" \
            -e PGID=1112 \
            -p 67:67/udp
            --restart unless-stopped \
-           wastrachan/docker-dhcpd:latest
+           wastrachan/dhcpd:latest
 ```
 
 
@@ -53,7 +51,7 @@ version: "2"
 
 services:
   docker-dhcpd:
-    image: wastrachan/docker-dhcpd
+    image: wastrachan/dhcpd
     container_name: docker-dhcpd
     environment:
       - PUID=1111
