@@ -1,4 +1,4 @@
-# ARCHIVE NOTICE: ISC DHCPD reached [end of life](https://www.isc.org/blogs/isc-dhcp-eol/) in 2022. As such, this image will receive no further updates or builds. ISC officially reccomends you migrate to [Kea](https://github.com/wastrachan/docker-kea).
+# ARCHIVE NOTICE: ISC DHCPD reached [end of life](https://www.isc.org/blogs/isc-dhcp-eol/) in 2022. As such, this image will receive no further updates or builds. ISC officially recommends you migrate to [Kea](https://github.com/wastrachan/docker-kea).
 
 # Docker DHCPD
 
